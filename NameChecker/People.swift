@@ -7,6 +7,10 @@ import Foundation
 class People: ObservableObject {
     @Published var items = [Person]()
     
+    init(items: [Person] = []) {
+        self.items = items
+    }
+
     func addPerson(_ person: Person) {
         items.append(person)
     }
