@@ -11,7 +11,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(self.people.items) { person in
-                NavigationLink(destination: Text("\(person.name)")) {
+                NavigationLink(destination:
+                    PersonDetailView(person: person)
+                ) {
                     VStack(alignment: .leading) {
                         Text("\(person.name)")
                     }

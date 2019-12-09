@@ -73,12 +73,30 @@ struct AddPersonView: View {
     }
     
     private func savePerson() {
-        print("SAVE PERSON")
-                
-        let person = Person(name: personName, imagePath: "")
-        people.addPerson(person)
+        guard let imageToSave = personImage else {
+            print("NO IMAGE TO SAVE")
+            return
+        }
         
-        self.presentationMode.wrappedValue.dismiss()
+        let id = UUID()
+        let fileName = Person.imageNameFor(id: id)
+        let result = FileManager.default.saveImage(
+            imageToSave,
+            withName: fileName,
+            compressionQuality: 0.8)
+
+        switch result {
+        case let .success(url):
+            let person = Person(id: id,
+                                name: personName,
+                                imagePath: url.absoluteString)
+            people.addPerson(person)
+        
+            self.presentationMode.wrappedValue.dismiss()
+
+        case let .failure(error):
+            print("SAVE ERROR \(error)")
+        }
     }
 }
 
