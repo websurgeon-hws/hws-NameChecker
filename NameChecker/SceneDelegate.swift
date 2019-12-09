@@ -16,12 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let people = People(items: [
-            Person(name: "Person 1", imagePath: ""),
-            Person(name: "Person 2", imagePath: ""),
-            Person(name: "Person 3", imagePath: "")
-        ])
-        let contentView = ContentView(people: people)
+        let contentView = ContentView(people: People(items: []))
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -31,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
     }
-
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

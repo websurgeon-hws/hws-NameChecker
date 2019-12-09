@@ -91,13 +91,15 @@ struct AddPersonView: View {
                                 name: personName,
                                 imagePath: url.absoluteString)
             people.addPerson(person)
-        
+            people.savePeople()
+            
             self.presentationMode.wrappedValue.dismiss()
 
         case let .failure(error):
             print("SAVE ERROR \(error)")
         }
     }
+    
 }
 
 struct AddPersonView_Previews: PreviewProvider {

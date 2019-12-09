@@ -4,12 +4,12 @@
 
 import Foundation
 
-struct Person: Identifiable, Codable {
-    let id: UUID
-    let name: String
-    let imagePath: String
+public struct Person: Identifiable, Codable {
+    public let id: UUID
+    public let name: String
+    public let imagePath: String
     
-    init(id: UUID? = nil, name: String, imagePath: String) {
+    public init(id: UUID? = nil, name: String, imagePath: String) {
         self.id = id ?? UUID()
         self.name = name
         self.imagePath = imagePath
@@ -17,11 +17,38 @@ struct Person: Identifiable, Codable {
 }
 
 extension Person {
-    static func imageNameFor(id: UUID) -> String {
+    public static func imageNameFor(id: UUID) -> String {
         return "personImage-\(id.uuidString)"
     }
     
-    var imageName: String {
+    public var imageName: String {
         return Person.imageNameFor(id: id)
+    }
+}
+
+extension People {
+    func savePeople(completion: ((Result<URL, PeopleStoreSaveError>) -> Void)? = nil) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let result = FileManager.default.savePeople(self.items, withName: "People")
+            DispatchQueue.main.async {
+                print("SAVE PEOPLE RESULT: \(result)")
+                completion?(result)
+            }
+        }
+    }
+    
+    func loadPeople(completion: ((Result<[Person], PeopleStoreLoadError>) -> Void)? = nil) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let result = FileManager.default.loadPeople(withName: "People")
+            DispatchQueue.main.async {
+                switch result {
+                case .failure: break
+                case let .success(people):
+                    self.items = people
+                }
+                print("LOAD PEOPLE RESULT: \(result)")
+                completion?(result)
+            }
+        }
     }
 }

@@ -29,7 +29,14 @@ struct ContentView: View {
             .sheet(isPresented: self.$showingAddPerson) {
                 AddPersonView(people: self.people)
             }
+            .onAppear(perform: loadPeopleIfNoItems)
         }
+    }
+    
+    private func loadPeopleIfNoItems() {
+        guard people.items.isEmpty else { return }
+        
+        people.loadPeople()
     }
 }
 

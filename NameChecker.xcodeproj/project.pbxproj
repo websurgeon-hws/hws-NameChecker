@@ -20,6 +20,8 @@
 		D067AA8A239FFF080044C38C /* FileManagerImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D067AA89239FFF080044C38C /* FileManagerImageStore.swift */; };
 		D067AA8C239FFF080044C38C /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D067AA8B239FFF080044C38C /* ImageStore.swift */; };
 		D0784B52239EDBD700677E50 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0784B51239EDBD700677E50 /* PersonDetailView.swift */; };
+		D0896C5123A1518500668C49 /* PeopleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0896C5023A1518500668C49 /* PeopleStore.swift */; };
+		D0896C5323A1518500668C49 /* FileManagerPeopleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0896C5223A1518500668C49 /* FileManagerPeopleStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		D067AA89239FFF080044C38C /* FileManagerImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerImageStore.swift; sourceTree = "<group>"; };
 		D067AA8B239FFF080044C38C /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		D0784B51239EDBD700677E50 /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
+		D0896C5023A1518500668C49 /* PeopleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleStore.swift; sourceTree = "<group>"; };
+		D0896C5223A1518500668C49 /* FileManagerPeopleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerPeopleStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +83,9 @@
 				D067AA83239FFF080044C38C /* Person.swift */,
 				D067AA85239FFF080044C38C /* People.swift */,
 				D067AA8B239FFF080044C38C /* ImageStore.swift */,
+				D0896C5023A1518500668C49 /* PeopleStore.swift */,
 				D067AA89239FFF080044C38C /* FileManagerImageStore.swift */,
+				D0896C5223A1518500668C49 /* FileManagerPeopleStore.swift */,
 				D05547F7239E3D3D007A7C36 /* Assets.xcassets */,
 				D05547FC239E3D3D007A7C36 /* LaunchScreen.storyboard */,
 				D05547FF239E3D3D007A7C36 /* Info.plist */,
@@ -170,6 +176,8 @@
 				D067AA84239FFF080044C38C /* Person.swift in Sources */,
 				D05547F2239E3D3A007A7C36 /* AppDelegate.swift in Sources */,
 				D0784B52239EDBD700677E50 /* PersonDetailView.swift in Sources */,
+				D0896C5123A1518500668C49 /* PeopleStore.swift in Sources */,
+				D0896C5323A1518500668C49 /* FileManagerPeopleStore.swift in Sources */,
 				D0554806239E3EC5007A7C36 /* ImagePicker.swift in Sources */,
 				D067AA8A239FFF080044C38C /* FileManagerImageStore.swift in Sources */,
 				D05547F4239E3D3A007A7C36 /* SceneDelegate.swift in Sources */,
