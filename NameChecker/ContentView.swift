@@ -22,6 +22,7 @@ struct ContentView: View {
                 self.showingAddPerson = true
             }) {
                 Image(systemName: "plus")
+                    .padding()
             })
             .sheet(isPresented: self.$showingAddPerson) {
                 AddPersonView(people: self.people)
