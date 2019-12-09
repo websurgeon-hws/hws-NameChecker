@@ -6,7 +6,8 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var people: People
-
+    @State private var showingAddPerson = false
+    
     var body: some View {
         NavigationView {
             List(self.people.items) { person in
@@ -17,6 +18,14 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Name Checker")
+            .navigationBarItems(trailing: Button(action: {
+                self.showingAddPerson = true
+            }) {
+                Image(systemName: "plus")
+            })
+            .sheet(isPresented: self.$showingAddPerson) {
+                AddPersonView(people: self.people)
+            }
         }
     }
 }
