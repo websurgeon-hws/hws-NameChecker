@@ -11,6 +11,9 @@ struct PersonDetailView: View {
     @State private var image: Image?
     @State private var errorMessage = ""
     @State private var showingMap = false
+    @State private var selectedPlace: MKPointAnnotation?
+    @State private var showingPlaceDetails = false
+    @State private var centerCoordinate = CLLocationCoordinate2D()
 
     var body: some View {
         VStack {
@@ -45,14 +48,16 @@ struct PersonDetailView: View {
             return nil
         }
 
-        let coord = Binding.constant(locationInfo.coordinate)
+        DispatchQueue.main.async {
+            self.centerCoordinate = locationInfo.coordinate
+        }
         let annotation: MKPointAnnotation = locationInfo
         return AnyView(
             NavigationView {
-                MapView(centerCoordinate: coord,
-                       selectedPlace: .constant(annotation),
-                       showingPlaceDetails: .constant(false),
-                       annotations: [annotation])
+                MapView(centerCoordinate: self.$centerCoordinate,
+                        selectedPlace: self.$selectedPlace,
+                        showingPlaceDetails: self.$showingPlaceDetails,
+                        annotations: [annotation])
                     .navigationBarTitle("Where you met", displayMode: .inline)
                     .navigationBarItems(leading:
                         Button(action: {
