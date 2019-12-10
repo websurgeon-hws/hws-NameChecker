@@ -3,12 +3,14 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct PersonDetailView: View {
     let person: Person
     
     @State private var image: Image?
     @State private var errorMessage = ""
+    @State private var showingMap = false
 
     var body: some View {
         VStack {
@@ -25,6 +27,30 @@ struct PersonDetailView: View {
         }
         .onAppear(perform: loadImage)
         .navigationBarTitle(person.name)
+        .navigationBarItems(trailing:
+            Button(action: {
+                self.showingMap = true
+            }) {
+                Text("Location")
+            }
+            .disabled(self.person.locationInfo == nil)
+        )
+        .sheet(isPresented: self.$showingMap) {
+            return self.mapView()
+        }
+    }
+    
+    private func mapView() -> MapView? {
+        guard let locationInfo = person.locationInfo else {
+            return nil
+        }
+
+        let coord = Binding.constant(locationInfo.coordinate)
+        let annotation: MKPointAnnotation = locationInfo
+        return MapView(centerCoordinate: coord,
+                       selectedPlace: .constant(annotation),
+                       showingPlaceDetails: .constant(false),
+                       annotations: [annotation])
     }
     
     func loadImage() {
@@ -44,6 +70,8 @@ struct PersonDetailView: View {
 
 struct PersonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonDetailView(person: Person(name: "Test 1", imagePath: ""))
+        NavigationView {
+            PersonDetailView(person: Person(name: "Test 1", imagePath: ""))
+        }
     }
 }
