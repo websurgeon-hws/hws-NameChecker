@@ -5,7 +5,7 @@
 import Foundation
 import MapKit
 
-class CodableMKPointAnnotation: MKPointAnnotation, Codable {
+public class CodableMKPointAnnotation: MKPointAnnotation, Codable {
     enum CodingKeys: CodingKey {
         case title, subtitle, latitude, longitude
     }

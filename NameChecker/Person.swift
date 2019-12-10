@@ -3,16 +3,29 @@
 //
 
 import Foundation
+import MapKit
 
 public struct Person: Identifiable, Codable {
     public let id: UUID
     public let name: String
     public let imagePath: String
+    public let locationInfo: CodableMKPointAnnotation?
     
-    public init(id: UUID? = nil, name: String, imagePath: String) {
+    public init(id: UUID? = nil,
+                name: String,
+                imagePath: String,
+                location: CLLocationCoordinate2D? = nil) {
         self.id = id ?? UUID()
         self.name = name
         self.imagePath = imagePath
+        let annotation = CodableMKPointAnnotation()
+        if let location = location {
+            annotation.title = name
+            annotation.coordinate = location
+            self.locationInfo = annotation
+        } else {
+            self.locationInfo = nil
+        }
     }
 }
 
