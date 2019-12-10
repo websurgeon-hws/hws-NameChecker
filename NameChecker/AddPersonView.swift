@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct AddPersonView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -11,7 +12,8 @@ struct AddPersonView: View {
     @State private var personImage: UIImage?
     @State private var showingImagePicker = false
     @State var image: Image?
-    
+    let locationFetcher = LocationFetcher()
+
     private var canSave: Bool {
         return !(personName.isEmpty || personImage == nil)
     }
@@ -63,6 +65,7 @@ struct AddPersonView: View {
                     onDismiss: handleChosenImage) {
                 ImagePicker(image: self.$personImage)
             }
+            .onAppear(perform: self.locationFetcher.start)
         }
     }
     
@@ -84,12 +87,14 @@ struct AddPersonView: View {
             imageToSave,
             withName: fileName,
             compressionQuality: 0.8)
+        let location = self.locationFetcher.lastKnownLocation
 
         switch result {
         case let .success(url):
             let person = Person(id: id,
                                 name: personName,
-                                imagePath: url.absoluteString)
+                                imagePath: url.absoluteString,
+                                location: location)
             people.addPerson(person)
             people.savePeople()
             
