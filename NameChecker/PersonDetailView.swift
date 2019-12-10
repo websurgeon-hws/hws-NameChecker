@@ -40,17 +40,30 @@ struct PersonDetailView: View {
         }
     }
     
-    private func mapView() -> MapView? {
+    private func mapView() -> AnyView? {
         guard let locationInfo = person.locationInfo else {
             return nil
         }
 
         let coord = Binding.constant(locationInfo.coordinate)
         let annotation: MKPointAnnotation = locationInfo
-        return MapView(centerCoordinate: coord,
+        return AnyView(
+            NavigationView {
+                MapView(centerCoordinate: coord,
                        selectedPlace: .constant(annotation),
                        showingPlaceDetails: .constant(false),
                        annotations: [annotation])
+                    .navigationBarTitle("Where you met", displayMode: .inline)
+                    .navigationBarItems(leading:
+                        Button(action: {
+                            self.showingMap = false
+                        }) {
+                            Image(systemName: "xmark")
+                                .padding()
+                        }
+                    )
+            }
+        )
     }
     
     func loadImage() {
