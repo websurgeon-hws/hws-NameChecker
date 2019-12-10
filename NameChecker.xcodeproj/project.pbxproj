@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0135F46239F6C33006EF25C /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0135F45239F6C33006EF25C /* LocationFetcher.swift */; };
 		D05547F2239E3D3A007A7C36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05547F1239E3D3A007A7C36 /* AppDelegate.swift */; };
 		D05547F4239E3D3A007A7C36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05547F3239E3D3A007A7C36 /* SceneDelegate.swift */; };
 		D05547F6239E3D3A007A7C36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05547F5239E3D3A007A7C36 /* ContentView.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0135F45239F6C33006EF25C /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		D05547EE239E3D3A007A7C36 /* NameChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NameChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05547F1239E3D3A007A7C36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D05547F3239E3D3A007A7C36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				D0896C5023A1518500668C49 /* PeopleStore.swift */,
 				D067AA89239FFF080044C38C /* FileManagerImageStore.swift */,
 				D0896C5223A1518500668C49 /* FileManagerPeopleStore.swift */,
+				D0135F45239F6C33006EF25C /* LocationFetcher.swift */,
 				D05547F7239E3D3D007A7C36 /* Assets.xcassets */,
 				D05547FC239E3D3D007A7C36 /* LaunchScreen.storyboard */,
 				D05547FF239E3D3D007A7C36 /* Info.plist */,
@@ -173,6 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0135F46239F6C33006EF25C /* LocationFetcher.swift in Sources */,
 				D067AA84239FFF080044C38C /* Person.swift in Sources */,
 				D05547F2239E3D3A007A7C36 /* AppDelegate.swift in Sources */,
 				D0784B52239EDBD700677E50 /* PersonDetailView.swift in Sources */,
